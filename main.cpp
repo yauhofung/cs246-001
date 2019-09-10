@@ -37,5 +37,5 @@ int main()
 
     EchoX("Hello",10);
     cout<<endl;
-    EchoX(28,28);
+    EchoX(Rectangle(),2);
     return 0;}
