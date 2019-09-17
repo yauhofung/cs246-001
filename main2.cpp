@@ -18,11 +18,11 @@ void Reverse(Vector<int>& vec)
 
 int main()
 {   srand(time(NULL));
-    cout<<int()<<endl;
+/*    cout<<int()<<endl;
     cout<<float()<<endl;
     cout<<double()<<endl;
     cout<<char()<<endl;
-    cout<<bool()<<endl;
+    cout<<bool()<<endl;*/
     Vector<int> t;
     Random(t,10);
     cout<<t<<endl;
