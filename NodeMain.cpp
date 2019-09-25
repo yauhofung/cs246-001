@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
-#include "node.h"
+#include "Node.h"
 using namespace ds;
 using namespace std;
 

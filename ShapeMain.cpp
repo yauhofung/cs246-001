@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include "shape.h"
+#include "Shape.h"
 using namespace std;
 
 template<typename T>
