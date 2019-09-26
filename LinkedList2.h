@@ -4,7 +4,7 @@
 #include <iostream>
 #include <string>
 #include <sstream>
-#include "node.h"
+#include "Node.h"
 
 namespace ds
 {
@@ -63,7 +63,7 @@ namespace ds
 			else
 			{
 				Node<T>* tmp=head;
-				while(tmp->GetLink!=NULL)
+				while(tmp->GetLink()!=NULL)
                 {   tmp=tmp->GetLink();}
                 tmp->SetLink(new Node<T>(data));
 			}
@@ -97,51 +97,78 @@ namespace ds
 
 		void RemoveFromFront() 
 		{
-			if(!IsEmpty())
+			if(head!=NULL)
 			{
-				Node<T> tmp = head;
-				head = head->GetLink();
+				Node<T>*tmp=head;
+				head=head->GetLink();
 				delete tmp;
-				tmp = NULL;
-
-				if(head == NULL)
-				{
-					rear = NULL;
-				}
-
+				tmp=NULL;
 				size -= 1;
 			}
 		}
 
 		void RemoveFromBack()
 		{
-			if(!IsEmpty())
+			if(head!=NULL)
 			{
-				if(rear == head)
+				if(head->GetLink()==NULL)
 				{
-					delete rear;
-					rear = NULL;
-					head = NULL;
+					delete head;
+					head=NULL;
 				}
 				else
 				{
-					Node<T> *tmp = head;
+					Node<T>*tmp=head;
 					
-					while(tmp->GetLink() != rear)
+					while(tmp->GetLink()->GetLink()!=NULL)
 					{
 						tmp = tmp->GetLink();
 					}
-					
-					delete rear;
+					Node<T>*oldData=tmp->GetLink();
 					tmp->SetLink(NULL);
-					rear = tmp;
+					delete oldData;
+					oldData=NULL;
 				}
 				
 				size -= 1;
 			}
 		}
+		void Remove(const T& value)
+		{	if(head!=NULL)
+			{	if(head->GetData()==value)
+				{	RemoveFromFront();}
+				else
+				{	Node<T>*tmp=head;
+					while(tmp->GetLink()!=NULL&&tmp->GetLink()->GetData()!=value)
+					{	tmp=tmp->GetLink();}
+					if(tmp->GetLink()!=NULL)
+					{	Node<T>*oldData=tmp->GetLink();
+						tmp->SetLink(oldData->GetLink());
+						oldData->SetLink(NULL);
+						delete oldData;
+						oldData=NULL;
+						size-=1;}}}}
 
-		bool IsEmpty() const { return (head == rear && head == NULL);}
+		bool IsEmpty() const {return head == NULL;}
+
+		int Length() const
+		{	return size;}
+
+		T& operator[](int index)
+		{	if(index>=0&&index<size)
+			{	Node<T>*tmp=head;
+				for(int i=0;i<index;i+=1)
+				{	tmp=tmp->GetLink();}
+				return tmp->GetData();}
+			throw "Out of Bound";}
+
+		const T& operator[](int index) const
+		{	if(index>=0&&index<size)
+			{	Node<T>*tmp=head;
+				for(int i=0;i<index;i+=1)
+				{	tmp=tmp->GetLink();}
+				return tmp->GetData();}
+			throw "Out of Bound";}
 
 		std::string ToString() const
 		{
