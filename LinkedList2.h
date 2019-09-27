@@ -20,7 +20,7 @@ namespace ds
 		LinkedList(const LinkedList<T>& obj)
 		{
 			size = obj.size;
-            head=Copy(obj.head);
+            		head=Copy(obj.head);
 		}
 
 		LinkedList<T>& operator=(const LinkedList<T>& rhs)
@@ -64,36 +64,36 @@ namespace ds
 			{
 				Node<T>* tmp=head;
 				while(tmp->GetLink()!=NULL)
-                {   tmp=tmp->GetLink();}
-                tmp->SetLink(new Node<T>(data));
+                		{   tmp=tmp->GetLink();}
+                	tmp->SetLink(new Node<T>(data));
 			}
 			size += 1;
 		}
 
-        void InsertBefore(const T& value,const T& data)
-        {   if(head!=NULL)
-            {   if(head->GetData()==value)
-                {   InsertInFront(data);}
-                else
-                {   Node<T>* tmp=head;
-                    while(tmp->GetLink!=NULL&&tmp->GetLink()->GetData()!=value)
-                    {   tmp=tmp->GetLink();}
-                    if(tmp->GetLink()!=NULL)
-                    {   Node<T>* nwdata=new Node<T>(data);
-                        nwdata->SetLink(tmp->GetLink());
-                        tmp->SetLink(nwdata);
-                        size+=1;}}}}
+	        void InsertBefore(const T& value,const T& data)
+        	{   if(head!=NULL)
+	            {   if(head->GetData()==value)
+        	        {   InsertInFront(data);}
+	                else
+        	        {   Node<T>* tmp=head;
+                	    while(tmp->GetLink!=NULL&&tmp->GetLink()->GetData()!=value)
+	                    {   tmp=tmp->GetLink();}
+        	            if(tmp->GetLink()!=NULL)
+                	    {   Node<T>* nwdata=new Node<T>(data);
+                        	nwdata->SetLink(tmp->GetLink());
+	                        tmp->SetLink(nwdata);
+        	                size+=1;}}}}
 
-        void InsertAfter(const T& value,const T& data)
-        {   if(head!=NULL)
-            {   Node<T>* tmp=head;
-                while(tmp!=NULL&&tmp->GetData()!=value)
-                {   tmp=tmp->GetLink();}
-                if(tmp!=NULL)
-                {   Node<T>* nwdata=new Node<T>(data);
-                    nwdata->SetLink(tmp->GetLink());
-                    tmp->SetLink(nwdata);
-                    size+=1;}}}
+	        void InsertAfter(const T& value,const T& data)
+        	{   if(head!=NULL)
+	            {   Node<T>* tmp=head;
+        	        while(tmp!=NULL&&tmp->GetData()!=value)
+                	{   tmp=tmp->GetLink();}
+	                if(tmp!=NULL)
+        	        {   Node<T>* nwdata=new Node<T>(data);
+	                    nwdata->SetLink(tmp->GetLink());
+        	            tmp->SetLink(nwdata);
+                	    size+=1;}}}
 
 		void RemoveFromFront() 
 		{
@@ -171,32 +171,17 @@ namespace ds
 			throw "Out of Bound";}
 
 		std::string ToString() const
-		{
-			std::stringstream out;
-
+		{	std::stringstream out;
 			out << "[";
-
 			for(Node<T> *tmp = head;tmp != NULL;tmp = tmp->GetLink())
-			{
-				out << *tmp;
-				
+			{	out << *tmp;
 				if(tmp->GetLink() != NULL)
-				{
-					out << ",";
-				}
-			}	
-			
+				{	out << ",";}}	
 			out << "]";
-
-			return out.str();
-		}
+			return out.str();}
 
 		friend std::ostream& operator<<(std::ostream& out,const LinkedList<T>& obj)
-		{
-			out << obj.ToString();
-			return out;
-		}
-	};
-}	
-	
+		{	out << obj.ToString();
+			return out;}};}
+
 #endif
