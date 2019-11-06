@@ -1,3 +1,6 @@
+#ifndef SORT_H
+#define SORT_H
+
 template <class T>
 void InsertionSort(T data[], int n)
 {	for(int i=1;i<n;i+=1)
@@ -28,3 +31,5 @@ void BubbleSort(T data[],int n)
 			{	T tmp=data[i];
 				data[j]=data[i+1];
 				data[i+1]=tmp;}}}}
+
+#endif
