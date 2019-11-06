@@ -5,7 +5,8 @@ void InsertionSort(T data[], int n)
 		while(j>0&&data[j]<data[j-1])
 		{	T tmp=data[j];
 			data[j]=data[j-1];
-			data[j-1]=tmp;}}}
+			data[j-1]=tmp;
+			j-=1;}}}
 
 template <class T>
 void SelectionSort(T data[],int n)
