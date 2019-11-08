@@ -1,7 +1,0 @@
-The first Integer is less than the second Integer.
-
-Sum
-66666
-
-Difference
-41976
