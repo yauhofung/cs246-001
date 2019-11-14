@@ -42,4 +42,23 @@ class BBNode
 		return out.str();}
 	friend ostream& operator<<(ostream& out,const BBNode<T>& obj)
 	{	out<<obj.ToString();
-		return out;}}
+		return out;}
+
+	BBNode<T>* Copy(BBNode<T>* p,BBNode<T>* root)
+	{	if(root=NULL)
+		{	return NULL;}
+		BBNode<T>* tmp=new BBNode<T>(root->GetData());
+		tmp->SetP(p);
+		tmp->SetLeft(Copy(tmp,root->GetLeft()));
+		tmp->SetRight(Copy(tmp,root->GetRight()));
+		return tmp;}
+
+	void Clear(BBNode<T>*& root)
+	{	if(root!=NULL)
+		{	Clear(root->GetLeft());
+			Clear(root->GetRight());
+			root->SetP(NULL);
+			delete root;
+			root=NULL;}};
+
+#endif
