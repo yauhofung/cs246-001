@@ -1,5 +1,5 @@
 template <class T>
-void Merge(T data[],int p,int q,int r)
+void Merge(T& data[],int p,int q,int r)
 {	const int m=r-p+1;
 	const int n=q-r;
 	T L[m],R[n];
@@ -29,9 +29,9 @@ void Merge(T data[],int p,int q,int r)
 			rc+=1;}}}
 
 template <class T>
-void MergeSort(T data[],int p,int q)
+void MergeSort(T& data[],int p,int q)
 {	if(p<q)
 	{	int r=(p+q)/2;
 		MergeSort(data,p,r);
-		MergeSort(data,p,q,r);
+		MergeSort(data,r+1,q);
 		Merge(data,p,q,r);}}
