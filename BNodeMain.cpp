@@ -111,6 +111,17 @@ bool search(BNode<T>* root,const T& data)
 	}
 }
 
+template <class T,class Process>
+void infixFunction(BNode<T>* root,Process F)
+{	if(root!=NULL)
+	{	infixFunction(root->GetLeft());
+		F(root->GetData());
+		infixFunction(root->GetRight());}}
+
+template <class T>
+void Print(const T& data)
+{	cout<<data<<"\n";}
+
 template <typename T>
 void infix(BNode<T>* root)
 {
@@ -143,6 +154,49 @@ void postfix(BNode<T>* root)
 		std::cout << root->GetData() << " ";
 	}
 }
+/*
+template <class T>
+T MinimumValue(BNode<T>* root) //recursively
+{	if(root==NULL)
+	{	throw "Empty Tree";}
+	else if(root->GetLeft()==NULL)
+	{	return root->GetData();}
+	else
+	{	return MinimumValue(root->GetLeft());}}
+*/
+template <class T>
+T MinimumValue(BNode<T>* root) //iteratively
+{	if(root==NULL)
+	{	throw "Empty Tree";}
+	BNode<T>* tmp=root;
+	while(tmp->GetLeft()!=NULL)
+	{	tmp=tmp->GetLeft();}
+	return tmp->GetData();}
+/*
+template <class T>
+T MaximumValue(BNode<T>* root) //recursively
+{       if(root==NULL)
+        {       throw "Empty Tree";}
+        else if(root->GetRight()==NULL)
+        {       return root->GetData();}
+        else
+        {       return MaximumValue(root->GetRight());}}
+*/
+template <class T>
+T MaximumValue(BNode<T>* root) //iteratively
+{	if(root==NULL)
+        {       throw "Empty Tree";}
+	BNode<T>* tmp=root;
+        while(tmp->GetRight()!=NULL)
+        {       tmp=tmp->GetRight();}
+        return tmp->GetData();}
+
+template <class T>
+T Range(BNode<T>* root)
+{	if(root==NULL)
+	{	return -1;}
+	else
+	{	return MaximumValue(root)-MinimumValue(root);}}
 
 int main()
 {
@@ -174,6 +228,11 @@ int main()
         Insert(tmp,9);
         Insert(tmp,2);
 	infix(tmp);
+	cout<<"\n";
+	infixFunction(tmp,Print);
+//	cout<<"Max: "<<MaximumValue(tmp)<<"\n";
+//	cout<<"Min: "<<MinimumValue(tmp)<<"\n";
+//	cout<<"Range: "<<Range(tmp)<<"\n";
 
 	return 0;
 }
