@@ -45,6 +45,9 @@ class Spooler
 			front=NULL;
 			back=NULL;}
 
+		bool IsEmpty()
+		{	return front==NULL;}
+
 		void AddJob(Pair<string,int> job)
 		{	if(front==NULL)
 			{	front=new Node<Pair<string,int> >(job);
