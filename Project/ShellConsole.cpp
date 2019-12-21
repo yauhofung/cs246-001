@@ -1,14 +1,19 @@
 //WORK IN PROGRESS
+//Expected Completion: 12/21/2019 @ 11:59PM
 #include <iostream>
 #include <string>
 #include <sstream>
 #include "LinkedMap.h"
+#include "LinkedList.h"
 using namespace std;
 using namespace ds;
 
 void CommandPrompt()
 {	LinkedMap<string,LinkedMap> root;
-	LinkedMap<string,LinkedMap>* pwd=root;
+
+	LinkedList<string>* pwd;
+	pwd.InsertInFront("root");
+
 	string str;
 
 	bool loop=true;
@@ -19,7 +24,7 @@ void CommandPrompt()
 		if(str=="cd")
 		{	getline(cin,str);
 
-			else if(str=="..")
+			if(str=="..")
 			{	//cd to parent dir
 
 int main()
