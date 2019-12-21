@@ -155,19 +155,16 @@ namespace ds
 		{
 			std::stringstream out;
 
-			out << "[";
-
 			for(Node<Pair<K,V> >* tmp = head;tmp != NULL;tmp = tmp->GetLink())
 			{
-				out << tmp->GetData();
+				out << tmp->GetData().GetKey();
 
 				if(tmp->GetLink() != NULL)
 				{
-					out << ",";
+					out << "  ";
 				}
 			}
 
-			out << "]";
 			return out.str();
 		}
 
