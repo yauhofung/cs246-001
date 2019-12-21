@@ -1,3 +1,4 @@
+//WORK IN PROGRESS
 #include <iostream>
 #include <string>
 #include <sstream>
@@ -17,9 +18,6 @@ void CommandPrompt()
 
 		if(str=="cd")
 		{	getline(cin,str);
-
-			if(str=="~")
-			{	pwd=root;}
 
 			else if(str=="..")
 			{	//cd to parent dir
