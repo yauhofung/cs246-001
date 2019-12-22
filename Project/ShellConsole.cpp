@@ -63,7 +63,10 @@ void CommandPrompt() //initializes Linux shell
 				{	throw "Cannot recreate existing directory";}
 				else
 				{	tmp=new LinkedMap<string,L>();
-					pwd->Put(cmd,*tmp);}}}}}
+					pwd->Put(cmd,*tmp);}}}
+
+		else
+		{	throw "Invalid command";}}}
 
 int main()
 {	//CommandPrompt(); //ERROR: compiler fails to call function
