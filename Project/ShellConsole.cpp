@@ -9,14 +9,16 @@
 using namespace std;
 using namespace ds;
 
+template <class L>
 void CommandPrompt() //initializes Linux shell
-{	LinkedMap<string,LinkedMap> root; //ERROR: compiler does not recognize LinkedMap as a valid data type
-	LinkedMap<string,LinkedMap>* pwd=&root; //points at present working directory
+{	LinkedMap<string,L> root; //root directory
 
-	LinkedList<LinkedMap<string,LinkedMap>*> path; //keeps track of full path to pwd
+	LinkedMap<string,L>* pwd=&root; //points at present working directory
+
+	LinkedList<LinkedMap<string,L>*> path; //keeps track of full path to pwd
 	path.InsertInFront(pwd);
 
-	LinkedMap<string,LinkedMap>* tmp; //points at created LinkedMap (touch/mkdir)
+	LinkedMap<string,L>* tmp; //points at created LinkedMap (touch/mkdir)
 
 	string cmd; //reads user input
 
@@ -60,10 +62,10 @@ void CommandPrompt() //initializes Linux shell
 			{	if(pwd->HasKey(cmd)) //searches for specified directory
 				{	throw "Cannot recreate existing directory";}
 				else
-				{	tmp=new LinkedMap<string,LinkedMap>();
+				{	tmp=new LinkedMap<string,L>();
 					pwd->Put(cmd,*tmp);}}}}}
 
 int main()
-{	CommandPrompt();
+{	//CommandPrompt(); //ERROR: compiler fails to call function
 
 	return 0;}
